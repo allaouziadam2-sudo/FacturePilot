@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill
@@ -19,6 +20,7 @@ en_retard = factures[
 total_retard = en_retard["Montant"].sum()
 en_retard = en_retard.copy()
 en_retard["Jours_retard"] = (aujourdhui - en_retard["Date_echeance"]).dt.days
+os.makedirs("output", exist_ok=True)
 en_retard.to_excel("output/factures_en_retard.xlsx", index=False)
 classeur = load_workbook("output/factures_en_retard.xlsx")
 feuille = classeur.active

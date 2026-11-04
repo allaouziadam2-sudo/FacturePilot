@@ -1,3 +1,4 @@
+import os
 from openpyxl import Workbook
 
 classeur = Workbook()
@@ -19,5 +20,5 @@ feuille.append(["Client D", "F004", 700,
 
 feuille.append(["Client E", "F005", 150,
                 "20/10/2026", "15/11/2026", "Impayee"])
-
+os.makedirs("data", exist_ok=True)
 classeur.save("data/factures.xlsx")
